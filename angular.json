@@ -1,7 +1,42 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "668dd047-88da-4e7e-b39d-56ca5bdfb54f"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "datagrid-crud": {
+      "projectType": "library",
+      "root": "projects/datagrid-crud",
+      "sourceRoot": "projects/datagrid-crud/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/datagrid-crud/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/datagrid-crud/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/datagrid-crud/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/datagrid-crud/src/test.ts",
+            "tsConfig": "projects/datagrid-crud/tsconfig.spec.json",
+            "karmaConfig": "projects/datagrid-crud/karma.conf.js"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "datagrid-crud"
 }
